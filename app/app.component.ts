@@ -1,8 +1,8 @@
 import {Component} from 'angular2/core';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 import { BggService } from './bgg.service';
 import { DashboardComponent } from './dashboard.component';
 import { HistoryComponent } from './history.component';
+import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 
 @Component({
     selector: 'app',
@@ -26,7 +26,6 @@ import { HistoryComponent } from './history.component';
     path: '/dashboard',
     name: 'Dashboard',
     component: DashboardComponent,
-    useAsDefault: true
   },
   {
     path: '/history',

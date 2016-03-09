@@ -1,22 +1,21 @@
-<html>
-  <h3>Game ID Search</h3>
-  <div class="grid">
-    <form #f="ngForm"
-          (ngSubmit)="onSubmitIdSearch()"
-          class="ui form">
-      <label>Title</label>
-      <input type="text" [(ngModel)]="idSearch.query">
-      <!-- <div class="radio-inline">
-        <label for="bg">
-          <input type="radio" [(ngModel)]="idSearch.type" name="type" value="boardgame" id="bg" checked>
-          Board Game
-        </label>
-        <label for="bgexp">
-          <input type="radio" [(ngModel)]="idSearch.type" name="type" value="boardgameexpansion" id="bgexp">
-          Expansion
-        </label>
-      </div> -->
-      <button type="submit" class="ui button">Search</button>
-    </form>
-  </div>
-</html>
+<h3>Game ID Search</h3>
+<div class="grid">
+  <form #f="ngForm"
+        (ngSubmit)="onSubmitIdSearch()"
+        class="ui form">
+    <label>Title</label>
+    <input type="text" [(ngModel)]="idSearch.query">
+    <!-- <div class="radio-inline">
+      <label for="bg">
+        <input type="radio" [(ngModel)]="idSearch.type" name="type" value="boardgame" id="bg" checked>
+        Board Game
+      </label>
+      <label for="bgexp">
+        <input type="radio" [(ngModel)]="idSearch.type" name="type" value="boardgameexpansion" id="bgexp">
+        Expansion
+      </label>
+    </div> -->
+    <button type="submit" class="ui button">Search</button>
+  </form>
+  <div>{{data}}</div>
+</div>

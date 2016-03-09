@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script>document.write('<base href="' + document.location + '" />');</script>
-    <title>Angular 2 Tour of Heroes</title>
+    <base href="/">
+    <title>BGG Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.min.css">
@@ -20,7 +20,7 @@
     <script src="https://code.angularjs.org/2.0.0-beta.0/http.dev.js"></script>
     <script src="node_modules/ng2-bootstrap/bundles/ng2-bootstrap.min.js"></script>
 
-    <script>
+    <!-- <script>
       System.config({
         transpiler: 'typescript',
         typescriptOptions: { emitDecoratorMetadata: true },
@@ -29,7 +29,21 @@
       System.import('app/main')
             .then(null, console.error.bind(console));
     </script>
-  </head>
+  </head> -->
+
+  <script>
+    System.config({
+      packages: {
+        app: {
+          format: 'register',
+          defaultExtension: 'js'
+        }
+      }
+    });
+    System.import('app/main')
+          .then(null, console.error.bind(console));
+  </script>
+</head>
 
   <body>
     <app>Loading...</app>
