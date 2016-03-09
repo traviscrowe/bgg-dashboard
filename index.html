@@ -6,43 +6,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.min.css">
-    <!-- IE required polyfills, in this exact order -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.33.3/es6-shim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.20/system-polyfills.js"></script>
-    <script src="https://npmcdn.com/angular2@2.0.0-beta.8/es6/dev/src/testing/shims_for_IE.js"></script>
+    
+    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+    <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>    
 
-    <script src="https://code.angularjs.org/2.0.0-beta.8/angular2-polyfills.js"></script>
+    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
     <script src="https://code.angularjs.org/tools/system.js"></script>
-    <script src="https://npmcdn.com/typescript@1.8.2/lib/typescript.js"></script>
-    <script src="https://code.angularjs.org/2.0.0-beta.8/Rx.js"></script>
-    <script src="https://code.angularjs.org/2.0.0-beta.8/angular2.dev.js"></script>
-    <script src="https://code.angularjs.org/2.0.0-beta.8/router.dev.js"></script>
-    <script src="https://code.angularjs.org/2.0.0-beta.0/http.dev.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="node_modules/angular2/bundles/router.dev.js"></script>
+    <script src="node_modules/angular2/bundles/http.dev.js"></script>
     <script src="node_modules/ng2-bootstrap/bundles/ng2-bootstrap.min.js"></script>
+    <script src="node_modules/xmltojson/lib/xmltojson.js"></script>
 
-    <!-- <script>
-      System.config({
-        transpiler: 'typescript',
-        typescriptOptions: { emitDecoratorMetadata: true },
-        packages: {'app': {defaultExtension: 'ts'}},
-      });
-      System.import('app/main')
+    <!--<script>
+        System.config({
+            defaultJSExtensions: true,
+            paths: {
+                // '*': 'node_modules/*',
+                // 'app/*': 'app/*',
+                // 'sax': 'node_modules/sax/lib/sax',
+                // 'events': 'node_modules/events/events',
+                // 'xmlbuilder': 'node_modules/xmlbuilder/lib/XMLBuilder',
+                // 'timers': 'node_modules/timers/index',
+                // 'stream': 'node_modules/stream/index',
+                // 'string_decoder': 'node_modules/string_decoder/index',
+                // 'emitter': 'node_modules/emitter/index',
+                // 'buffer': 'node_modules/buffer/index'
+            },
+            packageConfigPaths: ['node_modules/*/package.json'],
+            packages: {
+                app: {
+                    format: 'register',
+                    defaultExtension: 'js'
+                }
+            },
+            // meta: {
+            //     '*.ts': {
+            //         format: 'es6'
+            //     }
+            // }
+        });
+        System.import('app/main')
+                .then(null, console.error.bind(console));
+    </script>-->
+    <script>
+        System.config({
+            paths: {
+              'xmltojson': 'node_modules/xmltojson/lib/xmltojson.js'
+            },
+            packages: {
+                app: {
+                    format: 'register',
+                    defaultExtension: 'js'
+                }
+            }
+        });
+        System.import('app/main')
             .then(null, console.error.bind(console));
     </script>
-  </head> -->
-
-  <script>
-    System.config({
-      packages: {
-        app: {
-          format: 'register',
-          defaultExtension: 'js'
-        }
-      }
-    });
-    System.import('app/main')
-          .then(null, console.error.bind(console));
-  </script>
 </head>
 
   <body>
