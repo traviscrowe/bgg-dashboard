@@ -7,14 +7,20 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
 @Component({
     selector: 'app',
     template: `
-      <h1>{{title}}</h1>
-      <nav>
-        <a [routerLink]="['Dashboard']">Dashboard</a>
-        <a [routerLink]="['History']">History</a>
-      </nav>
-      <router-outlet></router-outlet>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">{{title}}</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a [routerLink]="['Dashboard']">Search</a></li>
+                    <li><a [routerLink]="['History']">History</a></li>
+                </ul>
+            </div>
+        </nav>
+        <router-outlet></router-outlet>
     `,
-    directives: [ROUTER_DIRECTIVES],
+    directives: [ ROUTER_DIRECTIVES ],
     providers: [
       ROUTER_PROVIDERS,
       BggService

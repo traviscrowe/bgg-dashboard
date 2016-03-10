@@ -24,6 +24,13 @@ export class DashboardComponent {
         value: '',
         expansion: false
     }
+    
+    history = {
+        datetime: null,
+        query: '',
+        matches: [],
+        expansion: false 
+    }
 
     constructor(
         private _router: Router,
@@ -41,14 +48,18 @@ export class DashboardComponent {
                         .subscribe(
                             data => this.games = this.parseGameData(data),
                             err => this.err = err,
-                            () => console.log('API Call Complete to BGG for Game Data')
+                            () => this._historyService.addResponse(this.getRequestHistory(this.idSearch, this.games))
                         )
             );
-        this._historyService.addResponse(this.idSearch);
+        
     }
 
     parseIdRecords(xml: string): string {
         var json = xmltojson.parseString(xml, null);
+        
+        if(!json['items'][0].hasOwnProperty('item')) {
+            return '';
+        }
         var arr = json['items'][0]['item'];
 
         var ids = '';
@@ -60,6 +71,10 @@ export class DashboardComponent {
 
     parseGameData(xml: string): Array<Object> {
         var json = xmltojson.parseString(xml, null);
+        
+        if(!json['items'][0].hasOwnProperty('item')) {
+            return null;
+        }
         var arr = json['items'][0]['item'];
         
         var gameData: Array<Object> = new Array<Object>();
@@ -67,9 +82,23 @@ export class DashboardComponent {
         for(var i = 0; i < arr.length; i++) {
             var cur = arr[i];
             var primaryName = '';
+            var totalPlayTime = '';
+            var totalPlayers = '';
             
             for(var n of cur.name) {
                 if(n._attr.type._value === 'primary') primaryName = n._attr.value._value;
+            }
+            
+            if(cur.minplaytime[0]._attr.value._value === cur.maxplaytime[0]._attr.value._value) {
+                totalPlayTime = cur.maxplaytime[0]._attr.value._value + ' minutes';
+            } else { 
+                totalPlayTime = cur.minplaytime[0]._attr.value._value + ' - ' + cur.maxplaytime[0]._attr.value._value + ' minutes';
+            }
+            
+            if(cur.minplayers[0]._attr.value._value === cur.maxplayers[0]._attr.value._value) {
+                totalPlayers = cur.minplayers[0]._attr.value._value;
+            } else {
+                totalPlayers = cur.minplayers[0]._attr.value._value + ' - ' + cur.maxplayers[0]._attr.value._value;
             }
             
             gameData.push({
@@ -77,8 +106,8 @@ export class DashboardComponent {
                 type: cur._attr.id._value,
                 name: primaryName,
                 ages: cur.minage[0]._attr.value._value + '+',
-                players: cur.minplayers[0]._attr.value._value + ' - ' + cur.maxplayers[0]._attr.value._value,
-                playTime: cur.minplaytime[0]._attr.value._value + ' - ' + cur.maxplaytime[0]._attr.value._value + ' minutes',
+                players: totalPlayers,
+                playTime: totalPlayTime === '0 minutes' ? '' : totalPlayTime,
                 yearPublished: cur.yearpublished[0]._attr.value._value,
                 description: cur.description[0]._text,
                 image: cur.image != null ? cur.image[0]._text : ''
@@ -86,5 +115,21 @@ export class DashboardComponent {
         }
         
         return gameData;
+    }
+    
+    getRequestHistory(idSearch: Object, games: Array<Object>): Object {
+        var matches: string = ''
+        
+        for(var game of games) {
+            matches = matches + game['name'] + ' [' + game['id'] + ']' + ', ';
+        }
+        matches = matches.substring(0, matches.length - 2);
+        
+        return {
+            datetime: new Date(),
+            query: idSearch['value'],
+            expansion: idSearch['expansion'],
+            matches: matches
+        };
     }
 }

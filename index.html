@@ -13,45 +13,15 @@
 
     <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
     <script src="https://code.angularjs.org/tools/system.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.24/system.src.js"></script>
     <script src="node_modules/rxjs/bundles/Rx.js"></script>
     <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
     <script src="node_modules/angular2/bundles/router.dev.js"></script>
     <script src="node_modules/angular2/bundles/http.dev.js"></script>
     <script src="node_modules/ng2-bootstrap/bundles/ng2-bootstrap.min.js"></script>
     <script src="node_modules/xmltojson/lib/xmltojson.js"></script>
-
-    <!--<script>
-        System.config({
-            defaultJSExtensions: true,
-            paths: {
-                // '*': 'node_modules/*',
-                // 'app/*': 'app/*',
-                // 'sax': 'node_modules/sax/lib/sax',
-                // 'events': 'node_modules/events/events',
-                // 'xmlbuilder': 'node_modules/xmlbuilder/lib/XMLBuilder',
-                // 'timers': 'node_modules/timers/index',
-                // 'stream': 'node_modules/stream/index',
-                // 'string_decoder': 'node_modules/string_decoder/index',
-                // 'emitter': 'node_modules/emitter/index',
-                // 'buffer': 'node_modules/buffer/index'
-            },
-            packageConfigPaths: ['node_modules/*/package.json'],
-            packages: {
-                app: {
-                    format: 'register',
-                    defaultExtension: 'js'
-                }
-            },
-            // meta: {
-            //     '*.ts': {
-            //         format: 'es6'
-            //     }
-            // }
-        });
-        System.import('app/main')
-                .then(null, console.error.bind(console));
-    </script>-->
+    <script src='https://wzrd.in/standalone/copy-button@latest'></script> 
+     
     <script>
         System.config({
             paths: {
@@ -67,6 +37,14 @@
         System.import('app/main')
             .then(null, console.error.bind(console));
     </script>
+    
+    <style>
+        body { 
+            padding-top: 40px; 
+            padding-right: 40px;
+            padding-left: 40px;
+        }
+    </style>
 </head>
 
   <body>

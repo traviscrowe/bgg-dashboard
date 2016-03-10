@@ -1,4 +1,4 @@
-<h3>Game ID Search</h3>
+<h3>Game Title Search</h3>
 <div class="grid">
     <form #f="ngForm" (ngSubmit)="onSubmitIdSearch()" class="ui form">
         <label>Title</label>
@@ -8,17 +8,51 @@
         <input value="Expansion" type="checkbox" [(ngModel)]="idSearch.expansion">
     </form>
     <div>
-        <li *ngFor="#game of games; #i = index">
-            <img src={{game.image}} width="250"><br>
-            <label>Image URL: </label><p> {{game.image}}</p>
-            <label>ID: </label><p> {{game.id}}</p>
-            <label>Name: </label><p> {{game.name}}</p>
-            <label>Ages: </label><p> {{game.ages}}</p>
-            <label>Players: </label><p> {{game.players}}</p>
-            <label>Play Time: </label><p> {{game.playTime}}</p>
-            <label>Year Published: </label><p> {{game.yearPublished}}</p>
-            <label>Description: </label><p> {{game.description}}<p>
-            <hr>
-        </li>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Image URL</th>
+                    <th>Ages</th>
+                    <th>Players</th>
+                    <th>Play Time</th>
+                    <th>Year</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="#game of games; #i = index">
+                    <td>
+                        {{game.id}}
+                    </td>
+                    <td>
+                        {{game.name}}
+                    </td>
+                    <td>
+                        <img src={{game.image}} width="50">
+                    </td>
+                    <td>
+                        {{game.image}}
+                    </td>
+                    <td>
+                        {{game.ages}}
+                    </td>
+                    <td>
+                        {{game.players}}
+                    </td>
+                    <td>
+                        {{game.playTime}}
+                    </td>
+                    <td>
+                        {{game.yearPublished}}
+                    </td>
+                    <td>
+                        {{game.description}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

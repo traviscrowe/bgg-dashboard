@@ -1,9 +1,29 @@
-<html>
-    <div>
-        <li *ngFor="#query of queryHistory; #i = index">
-            <label>Name Searched: </label><p> {{query.value}}</p>
-            <label>Include Expansions: </label><p> {{query.expansion}}</p>
-            <hr>
-        </li>
-    </div>
-</html>
+<h3>Search History</h3>
+<div class="grid">
+    <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Query</th>
+                    <th>Expansions</th>
+                    <th>Matches</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="#query of queryHistory; #i = index">
+                    <td>
+                        {{query.datetime}}
+                    </td>
+                    <td>
+                        {{query.query}}
+                    </td>
+                    <td>
+                        {{query.expansion}}
+                    </td>
+                    <td>
+                        {{query.matches}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</div>
