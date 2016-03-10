@@ -1,22 +1,24 @@
 <h3>Game ID Search</h3>
 <div class="grid">
-  <form #f="ngForm"
-        (ngSubmit)="onSubmitIdSearch()"
-        class="ui form">
-    <label>Title</label>
-    <input type="text" [(ngModel)]="idSearch.query">
-    <!-- <div class="radio-inline">
-      <label for="bg">
-        <input type="radio" [(ngModel)]="idSearch.type" name="type" value="boardgame" id="bg" checked>
-        Board Game
-      </label>
-      <label for="bgexp">
-        <input type="radio" [(ngModel)]="idSearch.type" name="type" value="boardgameexpansion" id="bgexp">
-        Expansion
-      </label>
-    </div> -->
-    <button type="submit" class="ui button">Search</button>
-  </form>
-  <div>{{ids}}</div>
-  <div>{{games}}</div>
+    <form #f="ngForm" (ngSubmit)="onSubmitIdSearch()" class="ui form">
+        <label>Title</label>
+        <input type="text" [(ngModel)]="idSearch.value">
+        <button type="submit" class="ui button">Search</button><br>
+        <label>Include Expansions</label>
+        <input value="Expansion" type="checkbox" [(ngModel)]="idSearch.expansion">
+    </form>
+    <div>
+        <li *ngFor="#game of games; #i = index">
+            <img src={{game.image}} width="250"><br>
+            <label>Image URL: </label><p> {{game.image}}</p>
+            <label>ID: </label><p> {{game.id}}</p>
+            <label>Name: </label><p> {{game.name}}</p>
+            <label>Ages: </label><p> {{game.ages}}</p>
+            <label>Players: </label><p> {{game.players}}</p>
+            <label>Play Time: </label><p> {{game.playTime}}</p>
+            <label>Year Published: </label><p> {{game.yearPublished}}</p>
+            <label>Description: </label><p> {{game.description}}<p>
+            <hr>
+        </li>
+    </div>
 </div>

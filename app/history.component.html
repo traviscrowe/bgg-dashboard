@@ -1,3 +1,9 @@
 <html>
-Hello History
+    <div>
+        <li *ngFor="#query of queryHistory; #i = index">
+            <label>Name Searched: </label><p> {{query.value}}</p>
+            <label>Include Expansions: </label><p> {{query.expansion}}</p>
+            <hr>
+        </li>
+    </div>
 </html>

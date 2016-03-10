@@ -25,7 +25,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
   {
     path: '/dashboard',
     name: 'Dashboard',
-    component: DashboardComponent,
+    component: DashboardComponent
   },
   {
     path: '/history',
