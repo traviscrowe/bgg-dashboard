@@ -2,6 +2,7 @@ import { Component, OnInit } from 'angular2/core';
 import { Router } from 'angular2/router';
 import { FORM_DIRECTIVES } from 'angular2/common';
 import { BggService } from './bgg.service';
+/// <reference path='xmltojson.d.ts'>
 import * as xmltojson from 'xmltojson';
 
 @Component ({
@@ -40,7 +41,7 @@ export class DashboardComponent {
   }
 
   parseIdRecords(xml) {
-    var json = xmltojson.parseString(xml);
+    var json = xmltojson.parseString(xml, null);
     var arr = json['items'][0]['item'];
     
     var ids = "";
