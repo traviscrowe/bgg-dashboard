@@ -9,6 +9,9 @@
   },
   "license": "ISC",
   "dependencies": {
+    "concurrently": "2.0.0",
+    "lite-server": "2.1.0",
+    "typescript": "1.8.7",
     "angular2": "2.0.0-beta.7",
     "bootstrap": "^3.3.6",
     "clipboard": "^1.5.9",
@@ -19,10 +22,7 @@
     "rxjs": "5.0.0-beta.2",
     "systemjs": "0.19.23",
     "xmltojson": "1.1.0",
-    "zone.js": "0.5.15",
-    "concurrently": "1.0.0",
-    "lite-server": "2.1.0",
-    "typescript": "1.8.7"
+    "zone.js": "0.5.15"
   },
   "devDependencies": {
     
