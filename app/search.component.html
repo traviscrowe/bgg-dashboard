@@ -3,7 +3,7 @@
     <form #f="ngForm" (ngSubmit)="onSubmitIdSearch()" class="ui form">
         <label>Title</label>
         <input type="text" [(ngModel)]="idSearch.value">
-        <button type="submit" class="ui button">Search</button><br>
+        <button type="submit" class="ui button" [disabled]=searching>Search</button> <span *ngIf=searching>Searching...</span><br>
         <label>Include Expansions</label>
         <input value="Expansion" type="checkbox" [(ngModel)]="idSearch.expansion">
     </form>
@@ -11,7 +11,7 @@
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th data-sortable="true">ID</th>
                     <th>Name</th>
                     <th>Image</th>
                     <th>Image URL</th>

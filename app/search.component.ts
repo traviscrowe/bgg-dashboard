@@ -9,13 +9,14 @@ import * as xmltojson from 'xmltojson';
 
 @Component ({
     selector: 'bgg-dashboard',
-    templateUrl: 'app/dashboard.component.html',
+    templateUrl: 'app/search.component.html',
     directives: [ FORM_DIRECTIVES ],
     providers: [ HistoryComponent ]
 })
 
-export class DashboardComponent {
+export class SearchComponent {
   
+    searching: boolean = false;
     ids: string;
     games: Array<Object>;
     err: Array<string>;
@@ -40,6 +41,7 @@ export class DashboardComponent {
     }
 
     onSubmitIdSearch(): void {
+        this.searching = true;
         this._bggService.getGamesBySearch(this.idSearch)
             .subscribe(
                 data => this.ids = this.parseIdRecords(data),
@@ -64,7 +66,7 @@ export class DashboardComponent {
 
         var ids = '';
         for(var i = 0; i < arr.length; i++) {
-            ids = ids + arr[i]._attr.id._value + ', ';
+            ids = ids + arr[i]._attr.id._value + ',';
         }
         return ids.substring(0, ids.length - 2);
     }
@@ -118,7 +120,17 @@ export class DashboardComponent {
     }
     
     getRequestHistory(idSearch: Object, games: Array<Object>): Object {
+        this.searching = false;
         var matches: string = ''
+        
+        if(games === null) {
+            return {
+                datetime: new Date(),
+                query: idSearch['value'],
+                expansion: idSearch['expansion'],
+                matches: null
+            };
+        }
         
         for(var game of games) {
             matches = matches + game['name'] + ' [' + game['id'] + ']' + ', ';

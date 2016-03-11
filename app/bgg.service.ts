@@ -14,21 +14,21 @@ export class BggService {
 
   getGamesBySearch(query) {
     var headers = new Headers();
-    headers.append('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8');
+    headers.append('Accept', 'application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8');
     
     if(query.expansion) {
         this.typeQuery += ',boardgameexpansion';
     }
     
-    var url = 'https://www.boardgamegeek.com/xmlapi2/search?type=' + this.typeQuery + '&query=' + query.value;
+    var url = 'https://cors-anywhere.herokuapp.com/http://www.boardgamegeek.com/xmlapi2/search?type=' + this.typeQuery + '&query=' + query.value;
     return this._http.get(url, headers).map((res:Response) => res.text());
   }
   
   getGamesByIds(ids) {
     var headers = new Headers();
-    headers.append('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8');
+    headers.append('Accept', 'application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8');
     
-    var url = 'https://www.boardgamegeek.com/xmlapi2/thing?type=' + this.typeQuery + '&id=' + ids;
+    var url = 'https://cors-anywhere.herokuapp.com/http://www.boardgamegeek.com/xmlapi2/thing?type=' + this.typeQuery + '&id=' + ids;
     return this._http.get(url, headers).map((res:Response) => res.text());
   }
 }

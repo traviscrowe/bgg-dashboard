@@ -1,8 +1,0 @@
-{
-  "port": 8000,
-  "files": ["./app/**/*.{html,htm,css,js}"],
-  "server": { "app": "./" },
-  "ui": {
-    "port": 8001
-  }
-}

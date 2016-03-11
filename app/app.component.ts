@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 import { BggService } from './bgg.service';
-import { DashboardComponent } from './dashboard.component';
+import { SearchComponent } from './search.component';
 import { HistoryComponent } from './history.component';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 
@@ -10,12 +10,13 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">{{title}}</a>
+                    <a class="navbar-brand">{{title}}</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li><a [routerLink]="['Dashboard']">Search</a></li>
+                    <li><a [routerLink]="['Search']">Search</a></li>
                     <li><a [routerLink]="['History']">History</a></li>
                 </ul>
+                <a href="#" class="pull-right"><img src="http://i.imgur.com/sCGovYA.jpg" height="50"></a>
             </div>
         </nav>
         <router-outlet></router-outlet>
@@ -29,9 +30,10 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
 
 @RouteConfig([
   {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: DashboardComponent
+    path: '/search',
+    name: 'Search',
+    component: SearchComponent,
+    useAsDefault: true
   },
   {
     path: '/history',
