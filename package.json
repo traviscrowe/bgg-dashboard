@@ -1,6 +1,9 @@
 {
   "name": "bgg-dashboard",
   "version": "1.0.0",
+  "config" : { 
+      "port" : "8080" 
+    },
   "scripts": {
     "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "tsc": "tsc",
