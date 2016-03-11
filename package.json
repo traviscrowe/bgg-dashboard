@@ -7,7 +7,7 @@
     "lite": "lite-server",
     "http-server": "http-server",
     "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
-    "start-heroku": "concurrently \"npm run tsc\" \"npm run http-server\" "
+    "start-heroku": "concurrently \"npm run tsc:w\" \"npm run http-server\" "
   },
   "license": "ISC",
   "dependencies": {

@@ -1,8 +1,8 @@
-import {Component} from 'angular2/core';
+import { Component, provide } from 'angular2/core';
 import { BggService } from './bgg.service';
 import { SearchComponent } from './search.component';
 import { HistoryComponent } from './history.component';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
+import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy } from 'angular2/router';
 
 @Component({
     selector: 'app',
@@ -16,7 +16,7 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
                     <li><a [routerLink]="['Search']">Search</a></li>
                     <li><a [routerLink]="['History']">History</a></li>
                 </ul>
-                <a href="#" class="pull-right"><img src="http://i.imgur.com/sCGovYA.jpg" height="50"></a>
+                <a href="/" class="pull-right"><img src="http://i.imgur.com/sCGovYA.jpg" height="50"></a>
             </div>
         </nav>
         <router-outlet></router-outlet>
@@ -24,7 +24,8 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
     directives: [ ROUTER_DIRECTIVES ],
     providers: [
       ROUTER_PROVIDERS,
-      BggService
+      BggService,
+      provide(LocationStrategy, { useClass: HashLocationStrategy })
     ]
 })
 
