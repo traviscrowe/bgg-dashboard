@@ -38,6 +38,10 @@ export class SearchComponent {
         private _bggService: BggService,
         private _historyComponent: HistoryComponent,
         private _historyService: HistoryService) {
+            this.games = new Array<Object>();
+            if(_historyService.gamesHistory !== undefined && _historyService.gamesHistory.length > 0) {
+                this.games = _historyService.gamesHistory[0];
+            }
     }
 
     onSubmitIdSearch(): void {
@@ -115,6 +119,8 @@ export class SearchComponent {
                 image: cur.image != null ? cur.image[0]._text : ''
             })
         }
+        this._historyService.gamesHistory = new Array<Object>();
+        this._historyService.addGames(gameData);
         
         return gameData;
     }
