@@ -3,9 +3,15 @@
     <form #f="ngForm" (ngSubmit)="onSubmitIdSearch()" class="ui form">
         <label>Title</label>
         <input type="text" [(ngModel)]="idSearch.value">
-        <button type="submit" class="ui button" [disabled]=searching>Search</button> <span *ngIf=searching>Searching...</span><br>
+        <button type="submit" class="ui button" [disabled]=searching>Search</button> 
+        <br>
         <label>Include Expansions</label>
         <input value="Expansion" type="checkbox" [(ngModel)]="idSearch.expansion">
+        <div *ngIf=searching class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
     </form>
     <div>
         <table class="table table-bordered table-hover">
