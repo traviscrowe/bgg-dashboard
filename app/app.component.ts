@@ -16,7 +16,6 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, LocationStrategy, Has
                     <li><a [routerLink]="['Search']">Search</a></li>
                     <li><a [routerLink]="['History']">History</a></li>
                 </ul>
-                <a href="/" class="pull-right"><img src="http://i.imgur.com/sCGovYA.jpg" height="50"></a>
             </div>
         </nav>
         <router-outlet></router-outlet>

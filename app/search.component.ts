@@ -116,7 +116,7 @@ export class SearchComponent {
                 playTime: totalPlayTime === '0 minutes' ? '' : totalPlayTime,
                 yearPublished: cur.yearpublished[0]._attr.value._value,
                 description: cur.description[0]._text,
-                image: cur.image != null ? cur.image[0]._text : ''
+                image: cur.image != null ? 'http:' + cur.image[0]._text : ''
             })
         }
         this._historyService.gamesHistory = new Array<Object>();
